@@ -1,19 +1,17 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import Navbar from './components/Navbar';
+import About from './pages/About';
+import Home from './pages/Home';
 
 const App = () => {
   return (
     <BrowserRouter>
       <Navbar />
-      <main>
-        <section className="h-screen flex items-center justify-center m-12 text-center text-3xl font-poppins">
-          <p>
-            Welcome to NUSDormReviews!
-          </p>
-          
-        </section>
-      </main>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
     </BrowserRouter>
   )
 }
