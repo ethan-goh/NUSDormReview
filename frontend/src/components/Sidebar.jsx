@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 
-function Sidebar() {
+const Sidebar = () => {
   const [rcOpen, setRcOpen] = useState(false);
   const [hallsOpen, setHallsOpen] = useState(false);
   const [housesOpen, setHousesOpen] = useState(false);
