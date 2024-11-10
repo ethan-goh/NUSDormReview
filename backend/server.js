@@ -7,8 +7,6 @@ const reviewRoutes = require("./routes/reviewRoutes")
 const app = express()
 
 
-const dbURI = 'mongodb+srv://ethangohye:Donkey.12345@nusdormreviews.p0xsg.mongodb.net/?retryWrites=true&w=majority&appName=NUSDormReviews'
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
 
 
 app.use(express.json())
@@ -20,6 +18,7 @@ app.use((req, res, next) => {
 
 app.use('/api/reviews', reviewRoutes)
 
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 
 app.listen(process.env.PORT, () => {
     console.log('listening on port', process.env.PORT)
