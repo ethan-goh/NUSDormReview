@@ -6,9 +6,6 @@ const reviewRoutes = require("./routes/reviewRoutes")
 
 const app = express()
 
-
-
-
 app.use(express.json())
 
 app.use((req, res, next) => {
@@ -18,8 +15,12 @@ app.use((req, res, next) => {
 
 app.use('/api/reviews', reviewRoutes)
 
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-
-app.listen(process.env.PORT, () => {
-    console.log('listening on port', process.env.PORT)
-})
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => {
+        app.listen(process.env.PORT, () => {
+            console.log('listening on port', process.env.PORT)
+        })
+    })
+    .catch((error) => {
+        console.log(error)
+    })
