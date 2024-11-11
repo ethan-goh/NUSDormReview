@@ -1,5 +1,5 @@
 const express = require('express')
-const { createWorkout } = require('../controllers/reviewControllers')
+const { createReview, getReviewsByHostel, getSingleReview } = require('../controllers/reviewControllers')
 
 const router = express.Router()
 
@@ -7,11 +7,11 @@ router.get('/', (req, res) => {
     res.json({msg: "GET all reviews"})
 })
 
-router.get('/:id', (req, res) => {
-    res.json({msg: "GET a single review"})
-})
+router.get('/:id', getSingleReview)
 
-router.post('/', createWorkout)
+router.get('/:hostel', getReviewsByHostel)
+
+router.post('/', createReview)
 
 router.delete('/', (req, res) => {
     res.json({msg: "DELETE a review"})
