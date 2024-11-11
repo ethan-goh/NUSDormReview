@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (   
-    <nav class="w-screen bg-black h-fit overflow-hidden">
+    <nav class="w-full top-0 z-50 bg-black h-fit overflow-hidden fixed">
         <div class="py-4 lg:px-8 px-4 max-w-[1280px] h-16 m-auto text-white flex items-center justify-between font-poppins"> 
             <div>
                 <h1 class="lg:text-2xl text-xl cursor-pointer font-semibold">
