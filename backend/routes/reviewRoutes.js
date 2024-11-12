@@ -7,7 +7,7 @@ router.get('/', getAllReviews)
 
 router.get('/:id', getSingleReview)
 
-router.get('/:hostel/reviews', getReviewsByHostel)
+router.get('/:hostelLink/reviews', getReviewsByHostel)
 
 router.post('/', createReview)
 

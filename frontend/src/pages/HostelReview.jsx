@@ -9,8 +9,13 @@ const HostelReview = () => {
     console.log(hostelLink)
     useEffect(() => {
         const fetchReviews = async () => {
-            const response = await fetch(`/api/${hostelLink}/reviews`)
+            const response = await fetch(`http://localhost:4000/api/reviews/${hostelLink}/reviews`, {
+                method: 'GET',
+                credentials: 'include'
+            })
             const json = await response.json()
+            console.log(json)
+            
 
             if (response.ok) {
                 setReviews(json)
@@ -26,9 +31,9 @@ const HostelReview = () => {
     <div>
         <h1>Reviews for {hostelName}</h1>
         {reviews && reviews.map((r) => 
-        <div>
-            {r.description}
-        </div>
+            <div>
+                {r.description}
+            </div>
         )}
         
     </div>

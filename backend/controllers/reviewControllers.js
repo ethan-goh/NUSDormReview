@@ -38,8 +38,9 @@ const getAllReviews = async (req, res) => {
 }
 
 const getReviewsByHostel = async (req, res) => {
-    const { hostel } = req.params
-    const reviews = await Review.find({ hostel: hostel })
+    const { hostelLink } = req.params
+    
+    const reviews = await Review.find({ hostel: hostelLink })
     try {
         res.status(200).json(reviews)
     } catch (error) {
