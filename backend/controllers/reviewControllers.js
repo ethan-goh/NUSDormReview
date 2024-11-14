@@ -2,7 +2,7 @@ const Review = require('../models/reviewModel')
 const mongoose = require('mongoose')
 
 const createReview = async (req, res) => {
-    const { rating, description, hostel } = req.body
+    const { title, rating, description, hostel } = req.body
 
     let hostelType = '';
     const residentialColleges = ['Residential College 4', 'Tembusu College', 'Ridge View Residential College', 'College of Alice & Peter Tan'];
@@ -22,7 +22,7 @@ const createReview = async (req, res) => {
 
     const hostelStripped = hostel.split(" ").join("-")
     try {
-        const review = await Review.create({ rating, description, hostel: hostelStripped, hostelType })
+        const review = await Review.create({ title, rating, description, hostel: hostelStripped, hostelType })
         res.status(200).json(review)
     } catch (error) {
         res.status(400).json({error: error.message})

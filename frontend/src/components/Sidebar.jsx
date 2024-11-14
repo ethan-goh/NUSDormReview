@@ -9,7 +9,7 @@ const Sidebar = () => {
   const [residencesOpen, setResidencesOpen] = useState(false);
 
   return (
-    <aside className="w-[250px] h-screen bg-gray-100 text-gray-700 font-poppins p-4 text-m text-center justify-between fixed top-16">
+    <aside className="w-[250px] h-screen bg-gray-100 text-gray-700 font-poppins p-3 text-m text-center justify-between fixed top-16">
       <div>
         <div onClick={() => setRcOpen(!rcOpen)} role="button" class="flex items-center w-full p-3 rounded-lg text-start transition-all
           hover:bg-orange-50 hover:bg-opacity-80 focus:bg-orange-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80
