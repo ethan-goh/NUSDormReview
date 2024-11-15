@@ -20,6 +20,25 @@ const createReview = async (req, res) => {
         hostelType = 'Residence';
     }
 
+    let emptyFields = []
+
+    if (!title) {
+        emptyFields.push('title')
+    }
+    if (!rating) {
+        emptyFields.push('rating')
+    }
+    if (!description) {
+        emptyFields.push('description')
+    }
+    if(!hostel) {
+        emptyFields.push('hostel')
+    }
+
+    if (emptyFields.length > 0) {
+        return res.status(400).json({error: "Please fill the required fields!", emptyFields})
+    }
+
     const hostelStripped = hostel.split(" ").join("-")
     try {
         const review = await Review.create({ title, rating, description, hostel: hostelStripped, hostelType })

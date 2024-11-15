@@ -8,7 +8,8 @@ export default {
         poppins: ['Poppins', 'sans-serif'], 
       },
       colors: {
-        NUSOrange: '#d97300'
+        NUSOrange: '#d97300',
+        ErrorColour: '#e7195a'
       }
     },
   },

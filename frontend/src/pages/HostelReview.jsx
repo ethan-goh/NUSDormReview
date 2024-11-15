@@ -25,7 +25,6 @@ const HostelReview = () => {
 
     const hostelName = hostelLink.split("-").join(" ")
 
-
   return (
     <div>
         <h1>Reviews for {hostelName}</h1>
