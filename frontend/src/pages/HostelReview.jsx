@@ -27,12 +27,16 @@ const HostelReview = () => {
 
   return (
     <div>
-        <h1>Reviews for {hostelName}</h1>
-        {reviews && reviews.map((r) => 
-            <div>
-                {r.description}
-            </div>
-        )}
+        <div class="w-full justify-center font-poppins text-xl font-semibold place-items-center p-6">
+            <h1>Reviews for {hostelName}</h1>
+        </div>
+        <div>
+            {reviews && reviews.map((review) => 
+                <div>
+                    <ReviewDetails key={review._id} review={review} />
+                </div>
+            )}
+        </div>
         
     </div>
   )

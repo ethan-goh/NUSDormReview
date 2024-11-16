@@ -13,16 +13,6 @@ const Navbar = ({ onFormClick }) => {
             <div class="flex lg:gap-8 gap-6 uppercase tracking-wider text-lg items-center">
                 <div role="button" class="hover:pb-2 hover:border-b-4 hover:border-NUSOrange hover:text-NUSOrange">
                     <span>
-                        <Link to="/about">About</Link>
-                    </span>
-                </div>
-                <div role="button" class="hover:pb-2 hover:border-b-4 hover:border-NUSOrange hover:text-NUSOrange">
-                    <span>
-                        <Link to="/contact">Contact</Link>
-                    </span>
-                </div>
-                <div role="button" class="hover:pb-2 hover:border-b-4 hover:border-NUSOrange hover:text-NUSOrange">
-                    <span>
                     <a onClick={onFormClick}>New Review</a>
                     </span>
                 </div>
