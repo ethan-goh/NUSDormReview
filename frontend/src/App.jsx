@@ -5,6 +5,8 @@ import Sidebar from './components/Sidebar';
 import Home from './pages/Home';
 import HostelReview from './pages/HostelReview';
 import ReviewForm from './components/ReviewForm';
+import Signup from './pages/Signup';
+import Login from './pages/Login';
 
 const App = () => {
   const [modalOpen, setModalOpen] = useState(false)
@@ -18,14 +20,13 @@ const App = () => {
   return (
     <BrowserRouter>
       <Navbar onFormClick={ openModal }/>
-      <Sidebar />
-      <ReviewForm isOpen={ modalOpen } onFormClose={ closeModal }/>
-      <div className="pt-16 pl-[250px]">
+      <ReviewForm isOpen={ modalOpen } onFormClose={ closeModal }/>      
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/:hostelLink/reviews" element={<HostelReview />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
-      </div>
     </BrowserRouter>
   )
 }
