@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useReviewsContext } from '../hooks/useReviewsContext';
 import { Rating } from 'react-simple-star-rating'
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const ReviewForm = ({isOpen, onFormClose}) => {
     if (!isOpen) return null;
@@ -18,6 +19,7 @@ const ReviewForm = ({isOpen, onFormClose}) => {
     const [rating, setRating] = useState(0); 
     const [emptyFields, setEmptyFields] = useState([])
     const [selectedHostel, setSelectedHostel] = useState("");
+    const { user } = useAuthContext()
 
     const handleDropdown = (hostel) => {
         setSelectedHostel(hostel);
@@ -32,12 +34,18 @@ const ReviewForm = ({isOpen, onFormClose}) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
+        if (!user) {
+            setError('You must be logged in!')
+            return
+        }
+
         const review = { title, rating, description, hostel }
         const response = await fetch(`${import.meta.env.VITE_LOCAL_HOST}/api/reviews`, {
             method: 'POST',
             body: JSON.stringify(review),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
             }
         })
         const json = await response.json()

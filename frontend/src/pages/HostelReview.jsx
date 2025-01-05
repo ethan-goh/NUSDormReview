@@ -1,18 +1,23 @@
 import React, { useEffect } from 'react'
 import { useReviewsContext } from '../hooks/useReviewsContext'
 import { useParams } from 'react-router-dom'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 import ReviewDetails from '../components/ReviewDetails'
 
 const HostelReview = () => {
     const {reviews, dispatch} = useReviewsContext()
     const { hostelLink } = useParams()
+    const { user } = useAuthContext()
     console.log(hostelLink)
     useEffect(() => {
         const fetchReviews = async () => {
             const response = await fetch(`${import.meta.env.VITE_LOCAL_HOST}/api/reviews/${hostelLink}/reviews`, {
                 method: 'GET',
-                credentials: 'include'
+                credentials: 'include',
+                headers: {
+                    'Authorization': `Bearer ${user.token}`
+                }
             })
             const json = await response.json()
             
@@ -20,8 +25,10 @@ const HostelReview = () => {
                 dispatch({type: 'SET_REVIEWS', payload: json})
             }
         }
-        fetchReviews()
-    }, [hostelLink])
+        if (user) {
+            fetchReviews()
+        }
+    }, [hostelLink, dispatch, user])
 
     const ratingReducer = (total, num) => {
         return total + num

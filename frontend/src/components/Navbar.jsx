@@ -1,10 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { useLogout } from '../hooks/useLogout';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const Navbar = ({ onFormClick }) => {
 
     const { logout } = useLogout()
+    const { user } = useAuthContext()
 
     const handleLogout = () => {
         logout()
@@ -18,22 +20,20 @@ const Navbar = ({ onFormClick }) => {
                 </h1>
             </div>
             <div class="flex lg:gap-8 gap-6 tracking-wider text-lg items-center">
-                <div role="button" class="hover:pb-2 hover:border-b-4 hover:border-NUSOrange hover:text-NUSOrange">
-                    <span>
-                    <a onClick={onFormClick}>New Review</a>
-                    </span>
-                </div>
-                <div>
-                <div role="button" class="hover:pb-2 hover:border-b-4 hover:border-NUSOrange hover:text-NUSOrange">
-                        <button onClick={handleLogout}>Log out</button>                  
+                
+                {user && (
+                    <div class="flex gap-6">
+                        <span>{user.email}</span>                    
+                        <button class="hover:pb-2 flex hover:border-b-4 hover:border-NUSOrange hover:text-NUSOrange" onClick={handleLogout}>Log out</button>
+                        <button class="hover:pb-2 flex hover:border-b-4 hover:border-NUSOrange hover:text-NUSOrange" onClick={onFormClick}>New Review</button>                    
                     </div>
-                </div>
-                <div role="button" class="hover:pb-2 hover:border-b-4 hover:border-NUSOrange hover:text-NUSOrange">
-                    <Link to="/login">Login</Link>                   
-                </div>
-                <div role="button" class="hover:pb-2 hover:border-b-4 hover:border-NUSOrange hover:text-NUSOrange">
-                    <Link to="/signup">Signup</Link>                   
-                </div>
+                )}
+                {!user && (
+                    <div class="flex gap-6">
+                        <Link role="button" to="/login" class="hover:pb-2 hover:border-b-4 hover:border-NUSOrange hover:text-NUSOrange">Login</Link>                   
+                        <Link role="button" to="/signup" class="hover:pb-2 hover:border-b-4 hover:border-NUSOrange hover:text-NUSOrange">Signup</Link>                   
+                    </div>
+                )}
                 
             </div>
             

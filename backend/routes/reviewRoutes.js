@@ -1,7 +1,10 @@
 const express = require('express')
 const { createReview, getAllReviews, getReviewsByHostel, getSingleReview, editReview } = require('../controllers/reviewControllers')
+const requireAuth = require('../middleware/requireAuth')
 
 const router = express.Router()
+
+router.use(requireAuth)
 
 router.get('/', getAllReviews)
 
