@@ -3,9 +3,9 @@ import React from 'react'
 const Home = () => {
   return (
     <div>
-        <section className="h-screen flex items-center justify-center m-12 text-center text-3xl font-poppins">
+        <section className="h-screen flex items-center justify-center m-12 text-center text-3xl font-poppins font-semibold">
         <p>
-            Welcome to NUSDormReviews! Leave a review for your hostel stay!
+          Your Trusted Guide to NUS Hostels – Honest Reviews, Real Experiences.
         </p>
         </section>
     </div>

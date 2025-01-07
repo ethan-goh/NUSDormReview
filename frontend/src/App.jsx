@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { useAuthContext } from './hooks/useAuthContext';
 
 import Navbar from './components/Navbar';
-import Sidebar from './components/Sidebar';
 import Home from './pages/Home';
 import HostelReview from './pages/HostelReview';
 import ReviewForm from './components/ReviewForm';
